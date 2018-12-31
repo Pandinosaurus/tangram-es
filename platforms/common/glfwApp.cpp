@@ -236,7 +236,8 @@ void run() {
         lastTime = currentTime;
 
         // Render
-        map->update(delta);
+        MapState state = map->update(delta);
+
         const bool wireframe = wireframe_mode;
         if(wireframe) {
             glPolygonMode(GL_FRONT, GL_LINE);
@@ -260,6 +261,8 @@ void run() {
         // Poll for and process events
         if (map->getPlatform().isContinuousRendering()) {
             glfwPollEvents();
+        } else if ((state.flags & MapState::is_animating) != 0) {
+            glfwPostEmptyEvent();
         } else {
             glfwWaitEvents();
         }
