@@ -203,9 +203,7 @@ public:
     void resize(int _newWidth, int _newHeight);
 
     // Update the map state with the time interval since the last update.
-    //returns
-    // true when the current view is completely loaded (all tiles are available and
-    // no animation in progress)
+    // Return MapState with flags set to determine whether the view is complete or changing.
     MapState update(float _dt);
 
     // Render a new frame of the map view (if needed)
