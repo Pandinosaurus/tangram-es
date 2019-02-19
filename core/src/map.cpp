@@ -232,7 +232,7 @@ MapState Map::update(float _dt) {
     bool wasReady = scene.isReady();
 
     if (!scene.completeScene(impl->view)) {
-        state |= MapState::scene_pending;
+        state |= MapState::scene_loading;
     } else {
         // Sync ClientTileSource changes with TileManager
         bool firstUpdate = !wasReady;

@@ -385,7 +385,7 @@ typedef NS_ENUM(NSInteger, TGMapRegionChangeState) {
 
         [self.glView display];
 
-        if (mapState.animating()) {
+        if (mapState.isAnimating()) {
             [self requestRender];
         }
     }

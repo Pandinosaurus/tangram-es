@@ -139,14 +139,17 @@ struct MapState {
         view_changing =    1 << 0,
         labels_changing =  1 << 1,
         tiles_loading =    1 << 3,
-        scene_pending =    1 << 4,
+        scene_loading =    1 << 4,
         is_animating =     1 << 5,
     };
     uint32_t flags = 0;
 
     bool viewComplete() { return flags == 0; }
-    bool viewChanging() { return (flags & view_changing); }
-    bool animating() { return (flags & is_animating); }
+    bool viewChanging() { return flags & view_changing; }
+    bool labelsChanging() { return flags & labels_changing; }
+    bool tilesLoading() { return flags & tiles_loading; }
+    bool sceneLoading() { return flags & scene_loading; }
+    bool isAnimating() { return flags & is_animating; }
 };
 
 class Map {

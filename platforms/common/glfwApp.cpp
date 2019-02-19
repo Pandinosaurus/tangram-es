@@ -261,7 +261,7 @@ void run() {
         // Poll for and process events
         if (map->getPlatform().isContinuousRendering()) {
             glfwPollEvents();
-        } else if ((state.flags & MapState::is_animating) != 0) {
+        } else if (state.isAnimating()) {
             glfwPostEmptyEvent();
         } else {
             glfwWaitEvents();
